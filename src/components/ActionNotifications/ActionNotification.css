@@ -1,0 +1,13 @@
+p#error_msg {
+  color: red;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+p#success_msg {
+  color: green;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
