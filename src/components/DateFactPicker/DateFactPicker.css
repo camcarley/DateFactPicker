@@ -2,10 +2,10 @@ div.date_picker {
   text-align: center;
 }
 
-p.description {
+p#description {
   font-weight: 400;
   text-align: center;
-  width: 600px;
+  width: 500px;
   float: left;
   margin: 1em;
   font: 1.05rem Georgia, serif;

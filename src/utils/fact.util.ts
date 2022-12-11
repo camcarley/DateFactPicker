@@ -9,22 +9,28 @@ import { MonthNumber } from "../types/month";
  *
  * @param dayNumber day of the month
  * @param monthNumber number of the month
- * @returns a Fact from numbersapi.com/ date endpoint
+ * @returns a
  */
 export const fetchFact = async (
   dayNumber: number,
   monthNumber: MonthNumber
-): Promise<Fact> => {
-  const res: Response = await fetch(
-    `http://numbersapi.com/${monthNumber}/${dayNumber}/date?json`,
-    {
-      method: "GET",
-    }
-  );
-  if (!res.ok) {
-    throw new Error(`Error! status: ${res.statusText}`);
+) => {
+  let res;
+  try {
+    res = await fetch(
+      `http://numbersapi.com/${monthNumber}/${dayNumber}/date?json`,
+      {
+        method: "GET",
+      }
+    );
+  } catch (e) {
+    console.error(e);
   }
-  const fact = (await res.json()) as Fact;
+
+  if (!res?.ok) {
+    throw new Error(`Error! status: ${res?.statusText}`);
+  }
+  const fact: Fact = (await res.json()) as Fact;
   fact.day = dayNumber;
   fact.month = monthNumber;
   fact.id = uuidv4();
@@ -36,7 +42,7 @@ export const fetchFact = async (
  * @param b comparator B
  * @returns based on the month and date, return -1 if a comes before b, 1 if a comes after b, 0 if they are the same
  */
-export const sortByMonthAndDate = (a: Fact, b: Fact): number => {
+export const sortByMonthAndDate = (a: Fact, b: Fact) => {
   if (a.month !== b.month) {
     // If the months are different, sort by month
     return a.month - b.month;

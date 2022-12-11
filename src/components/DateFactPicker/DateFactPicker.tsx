@@ -53,7 +53,9 @@ const DateFactPicker: React.FC = () => {
       ) : (
         <></>
       )}
-      <p>{fact ? fact.text : "Select a date to fetch a fact"}</p>
+      <p id="description">
+        {fact ? fact.text : "Select a date to fetch a fact"}
+      </p>
       <div>
         <button
           id="add_to_favorites"
