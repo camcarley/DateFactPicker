@@ -27,7 +27,7 @@ const FactProvider: React.FC<ProviderProps> = ({ children }) => {
    */
   const addFactToList = (newFact: Fact) => {
     if (!newFact) {
-      setMsg({ text: "No fact to add", status: "error" });
+      setMsg({ text: "Failed to fetch fact", status: "error" });
       return;
     }
     const idx = facts.findIndex((fact) => fact.text === newFact.text);

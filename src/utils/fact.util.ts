@@ -21,9 +21,8 @@ export const fetchFact = async (
       method: "GET",
     }
   );
-
   if (!res?.ok) {
-    throw new Error(`Error! status: ${res?.statusText}`);
+    return {} as Fact;
   }
   const fact: Fact = (await res.json()) as Fact;
   fact.day = dayNumber;

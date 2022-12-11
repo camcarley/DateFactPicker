@@ -21,6 +21,7 @@ describe("fetchFact", () => {
     status: 500,
     statusText: "Internal Server Error",
     ok: false,
+    json: () => Promise.reject(null),
   } as Response);
 
   it("should return a fact when Promise unsuccesfully resolves", async () => {

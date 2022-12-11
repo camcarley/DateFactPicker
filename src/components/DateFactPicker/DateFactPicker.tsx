@@ -13,6 +13,7 @@ const DateFactPicker: React.FC = () => {
   const { addFactToList, msg } = useContext(FactContext);
   let [fact, setFact] = useState<Fact>();
   let [selectedDate, setSelectedDate] = useState<Date>();
+  let [isLoading, setIsLoading] = useState<boolean>(false);
 
   /**
    *
@@ -21,7 +22,9 @@ const DateFactPicker: React.FC = () => {
    * @returns
    */
   const getFact = async (day: number, month: MonthNumber) => {
+    setIsLoading(true);
     const fact = await fetchFact(day, month);
+    setIsLoading(false);
     setFact(fact);
   };
 
@@ -32,6 +35,7 @@ const DateFactPicker: React.FC = () => {
 
   return (
     <div className="date_picker">
+
       <Datepicker
         selected={selectedDate}
         inline
@@ -54,7 +58,11 @@ const DateFactPicker: React.FC = () => {
         <></>
       )}
       <p id="description">
-        {fact ? fact.text : "Select a date to fetch a fact"}
+        {isLoading
+          ? "Loading..."
+          : fact
+          ? fact.text
+          : "Select a date to fetch a fact"}
       </p>
       <div>
         <button

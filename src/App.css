@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+h2#api_heading {
+  text-align: center;
+  width: 500px;
+  margin: 1em;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

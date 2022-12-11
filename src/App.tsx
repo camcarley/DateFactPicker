@@ -18,6 +18,14 @@ const App = () => {
 
   return (
     <div className="App">
+      <h2 id="api_heading">
+        {import.meta.env.PROD ? (
+          <h2>
+            Due to retraints of the API, please allow insensitive content via
+            your browser settings
+          </h2>
+        ) : null}
+      </h2>
       {view !== "datepicker" ? (
         <div>
           <button onClick={(e) => handleViewChange(e, "datepicker")}>
