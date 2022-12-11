@@ -15,17 +15,12 @@ export const fetchFact = async (
   dayNumber: number,
   monthNumber: MonthNumber
 ) => {
-  let res;
-  try {
-    res = await fetch(
-      `http://numbersapi.com/${monthNumber}/${dayNumber}/date?json`,
-      {
-        method: "GET",
-      }
-    );
-  } catch (e) {
-    console.error(e);
-  }
+  const res: Response = await fetch(
+    `http://numbersapi.com/${monthNumber}/${dayNumber}/date?json`,
+    {
+      method: "GET",
+    }
+  );
 
   if (!res?.ok) {
     throw new Error(`Error! status: ${res?.statusText}`);
