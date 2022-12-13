@@ -23,9 +23,9 @@ const DateFactPicker: React.FC = () => {
    */
   const getFact = async (day: number, month: MonthNumber) => {
     setIsLoading(true);
-    const fact = await fetchFact(day, month);
+    const fact = await fetchFact(day, month).catch((err) => {});
     setIsLoading(false);
-    setFact(fact);
+    setFact(fact!);
   };
 
   const addSelectedToFavouriteFacts = (e: FormEvent) => {
@@ -35,7 +35,10 @@ const DateFactPicker: React.FC = () => {
 
   return (
     <div className="date_picker">
-
+      <h2 id="api_heading">
+        Due to retraints of the API, please allow insensitive content via your
+        browser settings
+      </h2>
       <Datepicker
         selected={selectedDate}
         inline
