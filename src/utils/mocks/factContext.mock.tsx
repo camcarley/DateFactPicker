@@ -1,8 +1,7 @@
 import React from "react";
-import { FactListContextType } from "../../context/favouriteContext";
+import { FactListContextType } from "../../contexts/favouriteContext";
 import { Fact } from "../../types/fact";
-import { FactContext } from "../../context/favouriteContext";
-
+import { FactContext } from "../../contexts/favouriteContext";
 
 export const mockFactContext: FactListContextType = {
   facts: [],

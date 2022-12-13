@@ -1,13 +1,11 @@
 interface FactItemProps {
   id: string;
   index: number;
-  itemHeight: number;
   description: string;
   removeFactFromList: (id: string) => void;
 }
 
 const FactItem: React.FC<FactItemProps> = ({
-  itemHeight,
   description,
   id,
   removeFactFromList,
@@ -27,10 +25,10 @@ const FactItem: React.FC<FactItemProps> = ({
       aria-label="Fact Item"
       style={{
         float: "left",
-        height: itemHeight,
+        height: 100,
         position: "absolute",
         width: "100%",
-        top: `${index * itemHeight}px`,
+        top: `${index * 100}px`,
       }}
     >
       {description}

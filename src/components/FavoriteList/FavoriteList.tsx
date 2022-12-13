@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { FactContext } from "../../context/favouriteContext";
+import { FactContext } from "../../contexts/favouriteContext";
 import { Fact } from "../../types/fact";
 import { MonthNumber } from "../../types/month";
 import { getMonthName } from "../../utils/date.util";
@@ -101,7 +101,6 @@ const FavoriteList: React.FC = () => {
                   key={fact.id}
                   id={fact.id}
                   index={index}
-                  itemHeight={100}
                   description={fact.text}
                   removeFactFromList={removeFactFromList}
                 />

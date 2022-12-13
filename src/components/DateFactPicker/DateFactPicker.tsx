@@ -6,7 +6,7 @@ import { Fact } from "../../types/fact";
 import { MonthNumber } from "../../types/month";
 import Datepicker from "react-datepicker";
 import { dateToString } from "../../utils/date.util";
-import { FactContext } from "../../context/favouriteContext";
+import { FactContext } from "../../contexts/favouriteContext";
 import ActionNotification from "../ActionNotifications/ActionNotification";
 
 const DateFactPicker: React.FC = () => {

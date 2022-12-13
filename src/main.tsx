@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import FactProvider from "./context/favouriteContext";
+import FactProvider from "./contexts/favouriteContext";
 import App from "./App";
 import "./index.css";
 
