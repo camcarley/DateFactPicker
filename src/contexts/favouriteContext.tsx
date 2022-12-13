@@ -38,6 +38,10 @@ const FactProvider: React.FC<ProviderProps> = ({ children }) => {
       });
       return;
     }
+
+    /**
+     * The sort function's implementation is actually dependant on the browser. i.e Mozilla uses MergeSort , Chrome QuickSort for larger, and Insertion for smaller arrays
+     */
     setFacts([...facts, newFact].sort((a, b) => sortByMonthAndDate(a, b)));
     setMsg({
       text: `Fact from ${dateToString(
