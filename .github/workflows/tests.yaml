@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches: [extra-credit]
+
+jobs:
+  wait_for_vercel:
+    name: Wait for vercel
+    runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: Wait for Vercel preview deployment to be ready
+        uses: camcarley/DateFactPicker@master
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 120
+  vitest:
+    name: Vitest
+    needs: wait_for_vercel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - run: pnpm install --include=dev
+      - run: pnpm run test
+        env:
+          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
+          VERCEL_ENV: preview
