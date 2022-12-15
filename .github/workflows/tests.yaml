@@ -6,19 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-jobs:
-  wait_for_vercel:
-    name: Wait for vercel
-    runs-on: ubuntu-latest
-    outputs:
-      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
-    steps:
-      - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview
-        id: waitForVercelPreviewDeployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 120
   vitest:
     name: Vitest
     needs: wait_for_vercel
