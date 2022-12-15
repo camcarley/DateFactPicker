@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [main]
 
+jobs:
   vitest:
     name: Vitest
     needs: wait_for_vercel
