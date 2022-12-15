@@ -11,14 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PNPM
+        id: setup_pnpm
         uses: pnpm/action-setup@v2.2.4
         with:
           version: 7.12.2
 
       - name: Install dependencies
+        needs: setup_pnpm
+        id: install_dependencies
         run: pnpm install
 
       - name: run Vitest
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-        - run: pnpm run test
+        needs: install_dependencies
+        uses: actions/checkout@v2
+        run: pnpm run test
