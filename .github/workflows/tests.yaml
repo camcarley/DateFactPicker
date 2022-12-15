@@ -9,19 +9,16 @@ on:
 jobs:
   setup_pnpm:
     runs-on: ubuntu-latest
-    name: Setup PNPM
     steps:
-      - uses: pnpm/action-setup@v2.2.4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.4
         with:
           version: 7.12.2
-  vitest:
-    runs-on: ubuntu-latest
-    name: run Vitest
-    needs: setup_pnpm
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - run: pnpm install --include=dev
-      - run: pnpm run test
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: run Vitest
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+        - run: pnpm run test
