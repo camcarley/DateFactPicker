@@ -17,6 +17,12 @@ export const FactContext = createContext<FactListContextType>(
   {} as FactListContextType
 );
 
+/**
+ * The reasoning behind having setMsg / msg inside the file is for:
+ *  1.  Improved UX, as the user can see the message as soon as they interact with a fact
+ * 2.  The message is not dependent on the component, but rather the context
+ */
+
 const FactProvider: React.FC<ProviderProps> = ({ children }) => {
   const [facts, setFacts] = useState<Array<Fact>>([]);
   const [msg, setMsg] = useState<Message>({ text: "", status: "error" });

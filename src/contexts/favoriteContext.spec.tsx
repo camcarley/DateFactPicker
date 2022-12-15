@@ -1,12 +1,11 @@
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, test } from "vitest";
 import { FactContext } from "./favouriteContext";
-import { Fact } from "../types/fact";
 import React from "react";
 import { mockFact1 } from "../utils/mocks/fact.mock";
 
 describe("FactContext", () => {
-  describe("addFactToList", () => {
-    it("properly add fact to favorites", () => {
+  it("addFactToList", () => {
+    test("properly add fact to testites", () => {
       const TestComponent = () => {
         const { facts, msg, addFactToList } = React.useContext(FactContext);
         addFactToList(mockFact1);
@@ -15,7 +14,7 @@ describe("FactContext", () => {
       };
     });
 
-    it("properly prevent same fact being added twice favorites", () => {
+    test("properly prevent same fact being added twice favorites", () => {
       const TestComponent = () => {
         const { facts, msg, addFactToList } = React.useContext(FactContext);
         addFactToList(mockFact1);
@@ -25,8 +24,8 @@ describe("FactContext", () => {
     });
   });
 
-  describe("removeFactFromList", () => {
-    it("properly remove fact from favorites", () => {
+  it("removeFactFromList", () => {
+    test("properly remove fact from favorites", () => {
       const TestComponent = () => {
         const { facts, removeFactFromList, addFactToList } =
           React.useContext(FactContext);
@@ -37,7 +36,7 @@ describe("FactContext", () => {
       };
     });
 
-    it("properly remove fact from favorites", () => {
+    test("properly remove fact from favorites", () => {
       const TestComponent = () => {
         const { msg, removeFactFromList } = React.useContext(FactContext);
         removeFactFromList(mockFact1.id);
