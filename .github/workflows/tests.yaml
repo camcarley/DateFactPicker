@@ -23,5 +23,4 @@ jobs:
 
       - name: run Vitest
         needs: install_dependencies
-        uses: actions/checkout@v2
         run: pnpm run test
