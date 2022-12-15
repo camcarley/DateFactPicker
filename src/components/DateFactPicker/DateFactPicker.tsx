@@ -23,10 +23,12 @@ const DateFactPicker: React.FC = () => {
    */
   const getFact = async (day: number, month: MonthNumber) => {
     setIsLoading(true);
-    const fact = await fetchFact(day, month).catch((err) => {});
+    const fact = await fetchFact(day, month);
     setIsLoading(false);
     setFact(fact!);
   };
+
+  const isAddButtonDisabled = () => !fact;
 
   const addSelectedToFavouriteFacts = (e: FormEvent) => {
     e.preventDefault();
@@ -71,6 +73,7 @@ const DateFactPicker: React.FC = () => {
         <button
           id="add_to_favorites"
           role={"button"}
+          disabled={isAddButtonDisabled()}
           onClick={(e) => addSelectedToFavouriteFacts(e)}
         >
           Add to Favourites
