@@ -3,6 +3,8 @@ name: ci
 on:
   push:
     branches: [extra-credit]
+  pull_request:
+    branches: [main]
 
 jobs:
   wait_for_vercel:
@@ -12,7 +14,7 @@ jobs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
       - name: Wait for Vercel preview deployment to be ready
-        uses: camcarley/DateFactPicker@master
+        uses: patrickedqvist/wait-for-vercel-preview
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
