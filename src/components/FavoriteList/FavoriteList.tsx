@@ -13,7 +13,6 @@ const FavoriteList: React.FC = () => {
   let [displayedFacts, setDisplayedFacts] = useState<Array<Fact>>(facts);
 
   useEffect(() => {
-    console.log("ue1");
     const months: Array<MonthNumber> = [];
     facts.forEach((fact: Fact) => {
       if (!months.includes(fact.month)) {
@@ -24,7 +23,6 @@ const FavoriteList: React.FC = () => {
   }, [removeFactFromList]);
 
   useEffect(() => {
-    console.log("ue2");
     if (monthToFilterBy) {
       let shownFacts = facts.filter((fact: Fact) => {
         return fact.month === monthToFilterBy;
