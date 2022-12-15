@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { render } from "@testing-library/react";
+import { describe, expect, test, vi, it } from "vitest";
 import {
   mockContextWrapperHelper,
   mockFactContext,
@@ -18,21 +18,23 @@ describe("FavoriteItem", () => {
     />
   );
 
-  test("properly show FavoriteItem", () => {
+  it("properly show FavoriteItem", () => {
     render(component);
     expect(component).toBeTruthy();
   });
 
-  test("press button Delete fires removeFact", () => {
-    const removeFactSpy = vi.spyOn(mockFactContext, "removeFactFromList");
-    const { getByText } = render(component);
-    expect(getByText("Delete")).toBeTruthy();
-    expect(removeFactSpy).not.toHaveBeenCalled();
-  });
+  it("removeFact", () => {
+    test("press button Delete fires removeFact", () => {
+      const removeFactSpy = vi.spyOn(mockFactContext, "removeFactFromList");
+      const { getByText } = render(component);
+      expect(getByText("Delete")).toBeTruthy();
+      expect(removeFactSpy).not.toHaveBeenCalled();
+    });
 
-  test("proper distance from top of component", () => {
-    const { getByText } = render(component);
-    const element = getByText(mockFact.text);
-    expect(element.style.top).toBe(`${1 * 100}px`);
+    test("proper distance from top of component", () => {
+      const { getByText } = render(component);
+      const element = getByText(mockFact.text);
+      expect(element.style.top).toBe(`${1 * 100}px`);
+    });
   });
 });
