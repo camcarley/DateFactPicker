@@ -8,4 +8,5 @@
 5.  The useEffect cleanup was un-necessary, as there were no true incidents of having to 'cleanup'
 6.  Incorrectly layed my spec files, Describe -> It -> Test
 7. Add unit tests for test-helpers i.e mockPromiseHelper
+8. Could have done the switch statement component assignment thendisplay trick;
 
