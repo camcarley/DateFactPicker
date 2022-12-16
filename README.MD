@@ -7,5 +7,5 @@
 4.  I used a UUID library to simulate unique ID's coming from a database, could've just spun up my own MongoDB / Postgres instance
 5.  The useEffect cleanup was un-necessary, as there were no true incidents of having to 'cleanup'
 6.  Incorrectly layed my spec files, Describe -> It -> Test
-
+7. Add unit tests for test-helpers i.e mockPromiseHelper
 
