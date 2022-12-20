@@ -10,78 +10,63 @@ import { FactContext } from "../../contexts/favouriteContext";
 import ActionNotification from "../ActionNotifications/ActionNotification";
 
 const DateFactPicker: React.FC = () => {
-  const { addFactToList, msg } = useContext(FactContext);
-  let [fact, setFact] = useState<Fact>();
-  let [selectedDate, setSelectedDate] = useState<Date>();
-  let [isLoading, setIsLoading] = useState<boolean>(false);
+	const { addFactToList, msg } = useContext(FactContext);
+	let [fact, setFact] = useState<Fact>();
+	let [selectedDate, setSelectedDate] = useState<Date>();
+	let [isLoading, setIsLoading] = useState<boolean>(false);
 
-  /**
-   *
-   * @param e React.FormEvent
-   * @param fact new fact to add to the list
-   * @returns
-   */
-  const getFact = async (day: number, month: MonthNumber) => {
-    setIsLoading(true);
-    const fact = await fetchFact(day, month);
-    setIsLoading(false);
-    setFact(fact!);
-  };
+	/**
+	 *
+	 * @param e React.FormEvent
+	 * @param fact new fact to add to the list
+	 * @returns
+	 */
+	const getFact = async (day: number, month: MonthNumber) => {
+		setIsLoading(true);
+		const fact = await fetchFact(day, month);
+		setIsLoading(false);
+		setFact(fact!);
+	};
 
-  const isAddButtonDisabled = () => !fact;
+	const isAddButtonDisabled = () => !fact;
 
-  const addSelectedToFavouriteFacts = (e: FormEvent) => {
-    e.preventDefault();
-    addFactToList(fact!);
-  };
+	const addSelectedToFavouriteFacts = (e: FormEvent) => {
+		e.preventDefault();
+		addFactToList(fact!);
+	};
 
-  return (
-    <div className="date_picker">
-      <h2 id="api_heading">
-        Due to retraints of the API, please allow insensitive content via your
-        browser settings
-      </h2>
-      <Datepicker
-        selected={selectedDate}
-        inline
-        open={true}
-        onChange={(date: Date) => {
-          setSelectedDate(date);
-          getFact(date.getDate(), (date.getMonth() + 1) as MonthNumber);
-        }}
-      />
+	return (
+		<div className="date_picker">
+			<h2 id="api_heading">Due to retraints of the API, please allow insensitive content via your browser settings</h2>
+			<Datepicker
+				selected={selectedDate}
+				inline
+				open={true}
+				onChange={(date: Date) => {
+					setSelectedDate(date);
+					getFact(date.getDate(), (date.getMonth() + 1) as MonthNumber);
+				}}
+			/>
 
-      {selectedDate ? (
-        <h2>
-          {"A fact from " +
-            dateToString(
-              selectedDate.getDate(),
-              (selectedDate.getMonth() + 1) as MonthNumber
-            )}
-        </h2>
-      ) : (
-        <></>
-      )}
-      <p id="description">
-        {isLoading
-          ? "Loading..."
-          : fact
-          ? fact.text
-          : "Select a date to fetch a fact"}
-      </p>
-      <div>
-        <button
-          id="add_to_favorites"
-          role={"button"}
-          disabled={isAddButtonDisabled()}
-          onClick={(e) => addSelectedToFavouriteFacts(e)}
-        >
-          Add to Favourites
-        </button>
-      </div>
-      <ActionNotification description={msg?.text} msgStatus={msg?.status} />
-    </div>
-  );
+			{selectedDate ? (
+				<h2>{"A fact from " + dateToString(selectedDate.getDate(), (selectedDate.getMonth() + 1) as MonthNumber)}</h2>
+			) : (
+				<></>
+			)}
+			<p id="description">{isLoading ? "Loading..." : fact ? fact.text : "Select a date to fetch a fact"}</p>
+			<div>
+				<button
+					id="add_to_favorites"
+					role={"button"}
+					disabled={isAddButtonDisabled()}
+					onClick={(e) => addSelectedToFavouriteFacts(e)}
+				>
+					Add to Favourites
+				</button>
+			</div>
+			<ActionNotification description={msg?.text} msgStatus={msg?.status} />
+		</div>
+	);
 };
 
 export default DateFactPicker;

@@ -1,33 +1,33 @@
 {
-  "name": "takehome",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-datepicker": "^4.8.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.5",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/react": "^18.0.24",
-    "@types/react-datepicker": "^4.8.0",
-    "@types/react-dom": "^18.0.8",
-    "@types/uuid": "^9.0.0",
-    "@vitejs/plugin-react": "^2.2.0",
-    "jsdom": "^20.0.3",
-    "typescript": "^4.6.4",
-    "vite": "^3.2.3",
-    "vitest": "^0.25.5"
-  }
+	"name": "takehome",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-datepicker": "^4.8.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.4.5",
+		"uuid": "^9.0.0"
+	},
+	"devDependencies": {
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^14.4.3",
+		"@types/react": "^18.0.24",
+		"@types/react-datepicker": "^4.8.0",
+		"@types/react-dom": "^18.0.8",
+		"@types/uuid": "^9.0.0",
+		"@vitejs/plugin-react": "^2.2.0",
+		"jsdom": "^20.0.3",
+		"typescript": "^4.6.4",
+		"vite": "^3.2.3",
+		"vitest": "^0.25.5"
+	}
 }

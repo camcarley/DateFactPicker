@@ -5,9 +5,9 @@ import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <FactProvider>
-      <App />
-    </FactProvider>
-  </React.StrictMode>
+	<React.StrictMode>
+		<FactProvider>
+			<App />
+		</FactProvider>
+	</React.StrictMode>
 );
