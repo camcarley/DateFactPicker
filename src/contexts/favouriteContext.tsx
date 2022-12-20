@@ -13,9 +13,7 @@ export interface FactListContextType {
 interface ProviderProps {
   children?: React.ReactNode;
 }
-export const FactContext = createContext<FactListContextType>(
-  {} as FactListContextType
-);
+export const FactContext = createContext<FactListContextType>({} as FactListContextType);
 
 /**
  * The reasoning behind having setMsg / msg inside the file is for:
@@ -31,10 +29,10 @@ const FactProvider: React.FC<ProviderProps> = ({ children }) => {
    *
    * @param newFact Add new fact to list of facts in context
    */
-  const addFactToList = (newFact: Fact) => {
+  const addFactToList = (newFact: Fact): boolean => {
     if (!newFact) {
       setMsg({ text: "Failed to fetch fact", status: "error" });
-      return;
+      return false;
     }
     const idx = facts.findIndex((fact) => fact.text === newFact.text);
     if (idx !== -1) {
@@ -42,34 +40,32 @@ const FactProvider: React.FC<ProviderProps> = ({ children }) => {
         text: "Fact already in list, reselect for a new fact from said date",
         status: "error",
       });
-      return;
+      return false;
     }
-
     /**
      * The sort function's implementation is actually dependant on the browser. i.e Mozilla uses MergeSort , Chrome QuickSort for larger, and Insertion for smaller arrays
      */
     setFacts([...facts, newFact].sort((a, b) => sortByMonthAndDate(a, b)));
     setMsg({
-      text: `Fact from ${dateToString(
-        newFact.day,
-        newFact.month
-      )} added to list`,
+      text: `Fact from ${dateToString(newFact.day, newFact.month)} added to list`,
       status: "success",
     });
+    return true;
   };
 
   /**
    * @param id Id of fact to remove from list
    */
-  const removeFactFromList = (id: string) => {
+  const removeFactFromList = (id: string): boolean => {
     const idx = facts.findIndex((fact: Fact) => fact.id === id);
     if (idx === -1) {
       setMsg({ text: "Fact not found in list", status: "error" });
-      return;
+      return false;
     }
     facts.splice(idx, 1);
     setFacts(facts);
     setMsg({ text: "Fact succesfully removed from list", status: "success" });
+    return true;
   };
 
   return (

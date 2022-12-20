@@ -56,16 +56,10 @@ const FavoriteList: React.FC = () => {
             className="month_select"
             aria-label="Select a month to filter by"
           >
-            <option value={0}>
-              {monthToFilterBy ? "Return to Default" : "Select a month"}
-            </option>
+            <option value={0}>{monthToFilterBy ? "Return to Default" : "Select a month"}</option>
             {listOfMonths.map((monthNumber: MonthNumber) => {
               return (
-                <option
-                  aria-label={getMonthName(monthNumber)}
-                  key={monthNumber}
-                  value={monthNumber}
-                >
+                <option aria-label={getMonthName(monthNumber)} key={monthNumber} value={monthNumber}>
                   {getMonthName(monthNumber)}
                 </option>
               );

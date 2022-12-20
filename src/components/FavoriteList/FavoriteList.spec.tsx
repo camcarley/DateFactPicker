@@ -3,10 +3,7 @@ import { describe, expect, test, vi, it } from "vitest";
 import { act } from "react-dom/test-utils";
 import { mockFact1 as mockFact } from "../../utils/mocks/fact.mock";
 import FavoriteList from "./FavoriteList";
-import {
-  mockContextWrapperHelper,
-  mockFactContext,
-} from "../../utils/mocks/factContext.mock";
+import { mockContextWrapperHelper, mockFactContext } from "../../utils/mocks/factContext.mock";
 
 describe("FavoriteList", () => {
   const component = mockContextWrapperHelper(<FavoriteList />);
