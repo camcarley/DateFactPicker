@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+    branches: [extra-credit]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  checkout:
+    uses: actions/checkout@v3
+- name: Install Node.js
+  uses: actions/setup-node@v3
+  with:
+    node-version: 16
+
+  setup_pnpm:
+    runs-on: ubuntu-latest
+    name: Setup PNPM
+    id: setup_pnpm
+    uses: pnpm/action-setup@v2.2.4
+    with:
+      version: 7.12.2
+
+  install_dependencies:
+    - name: Install dependencies
+      needs: setup_pnpm
+      run: pnpm install
+
+      runVitest:
+    - name: Run Tests;
+      needs: install_dependencies
+      run: pnpm run test

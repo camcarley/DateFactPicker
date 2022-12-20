@@ -4,43 +4,35 @@ import "./App.css";
 import { useState } from "react";
 
 const App = () => {
-  type View = "datepicker" | "favourites";
+	type View = "datepicker" | "favourites";
 
-  const [view, setView] = useState<View>("datepicker");
+	const [view, setView] = useState<View>("datepicker");
 
-  const handleViewChange = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    view: View
-  ) => {
-    e.preventDefault();
-    setView(view);
-  };
+	const handleViewChange = (e: React.MouseEvent<HTMLButtonElement>, view: View) => {
+		e.preventDefault();
+		setView(view);
+	};
 
-  return (
-    <div className="App">
-      {import.meta.env.PROD ? (
-        <h2 id="api_heading">
-          Due to retraints of the API, please allow insensitive content via your
-          browser settings
-        </h2>
-      ) : null}
-      {view !== "datepicker" ? (
-        <div>
-          <button onClick={(e) => handleViewChange(e, "datepicker")}>
-            View Datepicker
-          </button>
-          <FavoriteList />
-        </div>
-      ) : (
-        <div>
-          <button onClick={(e) => handleViewChange(e, "favourites")}>
-            View Favourites
-          </button>
-          <DateFactPicker />
-        </div>
-      )}
-    </div>
-  );
+	return (
+		<div className="App">
+			{import.meta.env.PROD ? (
+				<h2 id="api_heading">
+					Due to retraints of the API, please allow insensitive content via your browser settings
+				</h2>
+			) : null}
+			{view !== "datepicker" ? (
+				<div>
+					<button onClick={(e) => handleViewChange(e, "datepicker")}>View Datepicker</button>
+					<FavoriteList />
+				</div>
+			) : (
+				<div>
+					<button onClick={(e) => handleViewChange(e, "favourites")}>View Favourites</button>
+					<DateFactPicker />
+				</div>
+			)}
+		</div>
+	);
 };
 
 export default App;
